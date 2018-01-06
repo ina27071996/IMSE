@@ -1,12 +1,7 @@
 <?php
 session_start();
-$mainSession = NULL;
-if(!isset($_SESSION['main_session']))
-{
-   include "functions.inc.php";
-   $conn = connect();
-   $mainSession = $_SESSION['main_session'];
-}
+include "functions.inc.php";
+$conn = connect();
 ?>
 
 
