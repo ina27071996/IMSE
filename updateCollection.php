@@ -62,14 +62,13 @@ tr td:hover {
 		<h2 style = "text-align: center;">Edit the collection</h2>
 		
 				<br>
-				<h3 >Create a new playlist in the collection: </h3>
+				<h3 >Change the collection: </h3>
 			
-		<form id='insertform' action= 'updateCollection.php' method='get'>
-        <table style='border: 1px solid #DDDDDD'>
-            <thead>
+		 <form id='updateForm' action='updateCollection.php' method='get'>
+        <table class='table table-bordered'>
+        <thead>
             <tr>
-                <th>Name</th>
-                <th>Hashtag</th>
+                <th>Title</th>
                 <th>Description</th>
             </tr>
             </thead>
@@ -80,75 +79,34 @@ tr td:hover {
                            value='<?php isset($_GET['title']) ? $_GET['title'] : null; ?>'/>
                 </td>
                 <td>
-                    <input id='hashtag' name='hashtag' type='text' size='10' placeholder="#awesome"
-                           value='<?php isset($_GET['hashtag']) ? $_GET['hashtag'] : null; ?>'/>
-                </td>
-                <td>
                     <input id='description' name='description' type='text' size='30' placeholder="music for..."
                            value='<?php isset($_GET['description']) ? $_GET['description'] : null; ?>'/>
                 </td>
-            </tbody>
+          </tbody>
         </table>
-        <input id='submit' type='submit' name='submit_button' value='Insert'/><br/>
+        <input id='hiddenId' name='hiddenId' type='hidden'  value='<?php echo  $_GET['id'] ?>' />
+        <input id='submit' type='submit' class="btn btn-success" value='Update' />
 
     </form>
-
-  <?php
+</div>
+<?php
   //Handle insert
-    
-    if (isset($_GET['title']) && isset($_GET['description'])) 
-    {
-      //Prepare insert statement
-      $sql = "INSERT INTO Playlist(Name,Hashtag,Description) 
-    VALUES('" . $_GET['title'] . "','"  . $_GET['hashtag'] . "','"  . $_GET['description'] . "')";
-      //Parse and execute statement
+  if (isset($_GET['hiddenId'])) 
+  {
+    //Prepare update statement
+    $sql = "UPDATE Collection SET" .
+  " Title='" . $_GET['title'] . 
+  "', Description='" . $_GET['description'] . 
+  "' WHERE Id=" . $_GET['hiddenId'];
+    //Parse and execute statement
     $result = $conn->query($sql);
-      //Print potential errors and warnings
-    //nice to have
-    }
-  ?>
-
-  <?php
-  if (isset($_GET['id'])) {
-    $sql = "SELECT * FROM Playlist WHERE Id = " . $_GET['id'] . " ";
-  } else if(!isset($_GET['id'])){
-    $sql = "SELECT * FROM Playlist";
+    //Print potential errors and warnings
+  //nice to have
+  
+   header("Location: http://localhost/imse/createAndReadCollection.php");
+   exit();
   }
-  $result = $conn->query($sql);
 ?>
-
-  <br>
-  <br>
-	<table class="table table-striped">
-			<h3>Your playlist for this collections are:</h3> 
-				<thead>
-					<tr>
-						<th>Name</th>
-            <th>Hashtag</th>
-            <th>Description</th>
-					</tr>
-				</thead>
-				<tbody>
-				
-					<tr>
-            <?php
-						while ($row = $row = $result->fetch_assoc()) {
-   							echo "<tr>";
-   							echo "<td>" . $row['Name'] . "</td>";
-                echo "<td>" . $row['Hashtag'] . "</td>";
-                echo "<td>" . $row['Description'] . "</td>";
-        				echo "<td><a  href=\"showPlaylists.php?id=".$row['Id']."\"> Edit </a></td>";
-							  echo "<td><a  href=\"deletePlaylist.php?id=".$row['Id']."\">Delete</a></td>";	
-        				echo "</tr>";
-   						 }
-   					?>
-					</tr>		
-			</tbody>
-		</table>
-	</div>
-	<script src="webjars/jquery/1.9.1/jquery.min.js"></script>
-	<script src="webjars/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-	<script src="webjars/bootstrap-datepicker/1.0.1/js/bootstrap-datepicker.js"></script>
-		
+  
 </body>
 </html>

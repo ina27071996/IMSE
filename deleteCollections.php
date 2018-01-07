@@ -1,12 +1,7 @@
 <?php
 session_start();
-$mainSession = NULL;
-if(!isset($_SESSION['main_session']))
-{
-   include "functions.inc.php";
-   $conn = connect();
-   $mainSession = $_SESSION['main_session'];
-}
+include "functions.inc.php";
+$conn = connect();
 
 
 
@@ -18,5 +13,6 @@ if ($conn->query($sql) === TRUE) {
 } else {
     echo "Error deleting record: " . $conn->error;
 }
+header("Location: http://localhost/imse/createAndReadCollection.php");
 
 ?> 
