@@ -51,7 +51,8 @@ tr td:hover {
 		<div class="navbar-collapse">
 			<ul class="nav navbar-nav">
 				<li class="active"><a href="createUser.php">Logout</a></li>
-        		<li class="active"><a href="searchPlaylist.php">Search Playlist</a></li>
+				<li class="active"><a href="searchPlaylist.php">Search Playlist</a></li>
+        
 			</ul>
 		</div>
 	</nav>
@@ -158,9 +159,9 @@ tr td:hover {
                 echo "<td>" . $row['Hashtag'] . "</td>";
                 echo "<td>" . $row['Description'] . "</td>";
         				echo "<td><a  href=\"editPlaylist.php?id=".$row['Id']."\"> Edit </a></td>";
-							  echo "<td><a href=\"deletePlaylist.php?id=".$row['Id']."\">Delete</a></td>";	
+							  echo "<td><a  href=\"deletePlaylist.php?id=".$row['Id']."\">Delete</a></td>";	
+							   echo "<td><a  href=\"track.php?id=".$row['Id']."\">Open Playlist</a></td>";	
         				echo "</tr>";
-						echo "<td><a  href=\"showTrack.php?id=".$row['Id']."\"> Open Playlist </a></td>";
    						 }
    					?>
 					</tr>		
