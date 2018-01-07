@@ -127,7 +127,7 @@ tr td:hover {
 	   							echo "<tr>";
 	      					    echo "<td>" . $row['Title'] . "</td>";
 								echo "<td>" . $row['Description'] . "</td>";
-	        					echo "<td><a href= \"showCollections.php?id=".$row['Id']."\"> Edit </a></td>";
+	        					echo "<td><a href= \"updateCollection.php?id=".$row['Id']."\"> Edit </a></td>";
 								echo "<td><a href= \"deleteCollections.php?id=".$row['Id']."\">Delete</a></td>";	
 	        					echo "</tr>";
 	   						}
