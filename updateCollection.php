@@ -50,7 +50,7 @@ tr td:hover {
 	<nav role="navigation" class="navbar navbar-default">
 		<div class="navbar-collapse">
 			<ul class="nav navbar-nav">
-				<li class="active"><a href="login.html">Logout</a></li>
+				<li class="active"><a href="/imse/login.php">Logout</a></li>
         <li class="active"><a href="/imse/CollectionsSuchen.php">Search through collections</a></li>
         <li class="active"><a href="/imse/PlaylistSuchen.php">Search through playlists</a></li>
         <li class="active"><a href="/imse/TrackSuchen.php">Search through tracks</a></li>
