@@ -50,7 +50,8 @@ tr td:hover {
 	<nav role="navigation" class="navbar navbar-default">
 		<div class="navbar-collapse">
 			<ul class="nav navbar-nav">
-				<li class="active"><a href="createUser.php">Logout</a></li>
+				<li class="active"><a href="login.php">Logout</a></li>
+				<li class="active"><a href="searchPlaylist.php">Search Playlist</a></li>
         
 			</ul>
 		</div>
@@ -62,19 +63,14 @@ tr td:hover {
 	    <div style="background-color:#00CCCC opacity:0.5 !important" class="jumbotron">
 
 	       <h1 style="text-align: center">Music Platform</h1>
-		   <div style="text-align: center">
-		                <img src="https://8tracks.com/assets/brand/8tracks_logo_blue-1e3b05eb940438026eff53085e3d7b9a7ce8a80c5823ac20695bcf31e0c2ea86.svg" alt="8tracks" width="200" height="100">
-		               </div>
-	        
+			<div style="text-align: center">
+			             <img src="https://8tracks.com/assets/brand/8tracks_logo_blue-1e3b05eb940438026eff53085e3d7b9a7ce8a80c5823ac20695bcf31e0c2ea86.svg" alt="8tracks" width="200" height="100">
+			            </div>
 	    </div>
 	    <div>
 	   	  <div>
 		
-		
-		
-		
-		
-		
+	
 		   <h1 style="text-align: left">Playlists:</h1>
 				<br>
 				<h3 >Create a new playlist: </h3>
@@ -147,8 +143,10 @@ tr td:hover {
 				<thead>
 					<tr>
 						<th>Name</th>
-            <th>Hashtag</th>
-            <th>Description</th>
+            			<th>Hashtag</th>
+            			<th>Description</th>
+						
+						
 					</tr>
 				</thead>
 				<tbody>
@@ -158,10 +156,13 @@ tr td:hover {
 						while ($row = $row = $result->fetch_assoc()) {
    							echo "<tr>";
    							echo "<td>" . $row['Name'] . "</td>";
-                echo "<td>" . $row['Hashtag'] . "</td>";
-                echo "<td>" . $row['Description'] . "</td>";
+                			echo "<td>" . $row['Hashtag'] . "</td>";
+                			echo "<td>" . $row['Description'] . "</td>";
+							
         				echo "<td><a  href=\"editPlaylist.php?id=".$row['Id']."\"> Edit </a></td>";
 							  echo "<td><a  href=\"deletePlaylist.php?id=".$row['Id']."\">Delete</a></td>";	
+							   echo "<td><a  href=\"showTrack.php?id=".$row['Id']."\">Open Playlist</a></td>";	
+							    
         				echo "</tr>";
    						 }
    					?>
@@ -172,16 +173,6 @@ tr td:hover {
 		<div>Total: <?php echo $result->num_rows; ?>  Playlists!</div>
 		
 	
-	<form method="post" action="server.php">
-		<h3> Search Playlist: </h3>
-		<div class="input-group">
-			<input id='search' type='text' name'search' size='20'>
-		</div>
-	<div class="input-group">
-		
-		<button href=\"playlist.php?id=" type="submit" name="search" class="btn btn-success">Search</button>
-	</div>
-	</form>
 	<script src="webjars/jquery/1.9.1/jquery.min.js"></script>
 	<script src="webjars/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 	<script src="webjars/bootstrap-datepicker/1.0.1/js/bootstrap-datepicker.js"></script>
