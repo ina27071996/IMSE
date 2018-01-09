@@ -51,15 +51,28 @@ tr td:hover {
 		<div class="navbar-collapse">
 			<ul class="nav navbar-nav">
 				<li class="active"><a href="/login">Logout</a></li>
-				<li class="active"><a href=\"CollectionsSuchen.php">Search through collections</a></li>
-				<li class="active"><a href=\"PlaylistSuchen.php">Search through playlists</a></li>
-				<li class="active"><a href=\"TrackSuchen.php">Search through tracks</a></li>
+				<li class="active"><a href="/imse/CollectionsSuchen.php">Search through collections</a></li>
+				<li class="active"><a href="/imse/PlaylistSuchen.php">Search through playlists</a></li>
+				<li class="active"><a href="/imse/TrackSuchen.php">Search through tracks</a></li>
 			</ul>
 		</div>
 	</nav>
 
 	<div class="container">
-		<h2 style = "text-align: center;">Collection</h2>
+		<div class="container">
+		
+	    <div class = "container">
+	    <div style="background-color:#00CCCC opacity:0.5 !important" class="jumbotron">
+
+	       <h1 style="text-align: center">Music Platform</h1>
+	       <h4 style="text-align: center">Implemented by Irina Demetrescu</h4>
+	       <div style="text-align: center">
+             <img src="https://8tracks.com/assets/brand/8tracks_logo_blue-1e3b05eb940438026eff53085e3d7b9a7ce8a80c5823ac20695bcf31e0c2ea86.svg" alt="8tracks" width="200" height="100">
+            </div>
+	    </div>
+	    <div>
+	   	  <div>
+		
 		
 				<br>
 				<h3 >Create a new collection: </h3>
@@ -124,9 +137,9 @@ tr td:hover {
 				
 						<?php
 							while ($row = $result->fetch_assoc()) {
-	   							echo "<tr>";
+           					    echo "<tr>";
 	      					    echo "<td>" . $row['Title'] . "</td>";
-								echo "<td>" . $row['Description'] . "</td>";
+            					echo "<td>" . $row['Description'] . "</td>";
 	        					echo "<td><a href= \"updateCollection.php?id=".$row['Id']."\"> Update </a></td>";
 								echo "<td><a href= \"deleteCollections.php?id=".$row['Id']."\">Delete</a></td>";
 								echo "<td><a href= \"playlistlast.php?id=".$row['Id']."\"> Show Playlists </a></td>";	
