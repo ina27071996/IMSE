@@ -51,7 +51,7 @@ tr td:hover {
 		<div class="navbar-collapse">
 			<ul class="nav navbar-nav">
 				<li class="active"><a href="login.php">Logout</a></li>
-				<li class="active"><a href="searchPlaylist.php">Search Playlist</a></li>
+				<li class="active"><a href="PlaylistSuchen.php">Search Playlist</a></li>
         
 			</ul>
 		</div>
