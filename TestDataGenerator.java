@@ -1,5 +1,6 @@
+package create;
 import java.sql.*;
-import java.util.Random;
+
 
 
 public class TestDataGenerator {
@@ -9,16 +10,13 @@ public class TestDataGenerator {
 		try {
 			  //conection info 
 		      Class.forName("com.mysql.jdbc.Driver");
-		      String database = "jdbc:mysql://sql11.freemysqlhosting.net:3306/";
-		      String user = "sql11213547";
-		      String pass = "xCmX9tm7ku";
+		      String database = "jdbc:mysql://sql11.freesqldatabase.com:3306/";
+		  	  String user = "sql11214736";
+		  	  String pass = "AUtSLeFRPX";
 
 		      // establish connection to database
 		      Connection con = DriverManager.getConnection(database, user, pass);
 		      Statement stmt = con.createStatement();
-		      
-		      String InsertTableSQL ="INSERT INTO person (ID,EMAIL,LOCATION,CITY,COUNTRY,COLLEGE, WEBSITE, BIO, LASTNAME, FIRSTNAME)VALUES(?,?,?,?,?,?,?,?,?,?)";
-		      PreparedStatement prpSt = con.prepareStatement(InsertTableSQL);
 		      
 		      String email[] = {"cmosen0@dmoz.org", "tjordeson1@bluehost.com", "tcropp2@pbs.org", "jsotworth3@miitbeian.gov.cn",
 		    		  "jroskell4@google.fr", "jupex5@omniture.com", "ncapstick6@examiner.com", "ihalliberton7@skype.com", "lbrownstein8@mapy.cz", "gstanmer9@ted.com", "tgrimleya@plala.or.jp", "ebroskeb@goo.gl", "lledstonec@blogger.com", "afydod@devhub.com", "mbennoee@youtu.be", "bakisterf@intel.com", "gcresarg@webs.com", "fhelmh@wikimedia.org", "bjaskiewiczi@sohu.com",
@@ -86,8 +84,6 @@ public class TestDataGenerator {
 		    		  "Murl", "Spencer", "Jacklyn", "Garrison", "Jaeden", "Aliza", "Morris", "Deven", "Nick", "Jacklyn", "Jesus", "Cesar", "Icie", "Shirley", "Zackary", "Morris", "Reece", "Tyson", "Meta", "Jan", "Hilario", "Albert", "Hilma", "Nayeli", "Shawn", "Keenan", "Jaylan", "Donnie", "Stacey", "Judah"
 		      };
 		      
-		      String InsertTableSQL2 = "INSERT INTO user(ID, JOINDATE, USERNAME, PASSWORD, PROFILEPICTURE, PERSONID) VALUES (?,?,?,?,?,?)";
-		      PreparedStatement prpSt2 = con.prepareStatement(InsertTableSQL2);
 		      
 		      String joinDate[] = {"5/3/1989", "9/21/2001", "7/13/2008", "5/3/2000", "5/17/1993", "11/26/2008", "6/16/1990", "11/17/2011", "6/21/1997", "4/24/1990", "2/12/2003", "6/8/1982", "12/26/2002", "10/5/1989", "8/20/2012", "2/2/2001", "9/26/1992", "9/4/1991", "8/28/1994", "11/17/2013", "10/5/1996", "4/8/2010", "9/25/1990", "10/12/2016", "5/18/2003", "4/29/1990",
 		    		  "9/9/1986", "11/2/1998", "11/29/2002", "5/21/1997", "6/24/2008", "11/1/2017", "9/20/1983", "9/11/1995", "12/25/2005", "4/23/1987", "2/7/2002", "7/28/2006", "10/2/1990", "3/9/2001", "6/14/2013", "8/1/1984", "5/23/2017", "7/6/2007", "7/23/2011", "8/13/2014", "9/4/2001", "9/7/2005", "4/30/1988", "6/8/2002",
@@ -116,29 +112,29 @@ public class TestDataGenerator {
 				    	  "http://dummyimage.com/234x159.bmp/ff4444/ffffff", "http://dummyimage.com/139x189.png/ff4444/ffffff", "http://dummyimage.com/111x148.png/5fa2dd/ffffff", "http://dummyimage.com/153x156.jpg/dddddd/000000"
 		      };
 		      
-		      String InsertTabelSQL3 = "INSERT INTO track(ID, NAME, ARTIST, YEAR, ALBUM) VALUES (?,?,?,?,?)";
-		      PreparedStatement prpSt3 = con.prepareStatement(InsertTabelSQL3);
-		      
-		      String name[] = {"Phantasm III: Lord of the Dead", "Igor", "Macbeth", "Russia House, The", "How Do You Know", "Dans la peau d'une grande", "Necessary Death, A", "Under Capricorn", "Terkel in Trouble", "God Save the King", "Dolly and Her Lover", "Come and Get It", "The Forgotten Space", "Road Warrior, The (Mad Max 2)", "Antibodies", "(A)sexual", "Sky West and Crooked (Gypsy Girl) ",
-		    		  "Tu£sday", "David and Bathsheba", "Seventh Veil, The", "Hereafter", "Mélo", "Life of Crime", "File on Thelma Jordan, The", "Sweetie", "Devil's Playground", "The Last Gladiators", "Soul Food", "Goebbels Experiment, The", "Amazing Grace", "Full Speed", "Undertaker and His Pals, The", "Christmas Carol, A", "Outbreak", "All's Well", "Chennai Express", "Kites", "Boondock Saints II: All Saints Day, The",
-		    		  "Secret of Santa Vittoria, The", "Death by China ", "Long Dark Hall, The", "Secrets & Lies", "Lone Ranger, The", "Alien", "Rembrandt", "Bolero (Uns et les autres, Les)", "Devil Hunter", "PCU", "White Banners", "My Favorite Wife", "Auntie Mame", "Go for It", "Nenette and Boni", "Juan of the Dead", "Ocean's Eleven", "I Have Found It", "First Shot", "Dr. Otto and the Riddle of the Gloom Beam", "Our Family Wedding",
-		    		  "Shaolin Wooden Men", "Bury My Heart at Wounded Knee", "Purgatory", "Transformers", "Sergeant Körmy and the South Pacific", "Walk in the Sun, A", "Hipsters (Stilyagi) ", "Let's Not Keep in Touch! ", "Wer", "Forger, The", "Starving Games, The", "Liberty", "Place Beyond the Pines, The", "Man of Steel", "Who Are you Polly Maggoo (Qui êtes-vous, Polly Maggoo?)", "Feast II: Sloppy Seconds", "Post Tenebras Lux", 
-		    		  "Boy Meets Girl", "Saludos Amigos", "Yu-Gi-Oh! ", "Private School", "Multiplicity", "Wagon Master", "Visitors, The", "Idiot Returns, The (Návrat idiota)", "Kiss of the Damned", "Evidence", "Locked Out (Enfermés dehors) ", "Narrow Margin"
+		     
+		      String track_title[] = {"Phantasm III: Lord of the Dead", "Igor", "Macbeth", "Russia House, The", "How Do You Know", "Dans la peau d'une grande", "Necessary Death, A", "Under Capricorn", "Terkel in Trouble", "God Save the King", "Dolly and Her Lover", "Come and Get It", "The Forgotten Space", "Road Warrior, The (Mad Max 2)", "Antibodies", "(A)sexual", "Sky West and Crooked (Gypsy Girl) ",
+		    		  "Tu£sday", "David and Bathsheba", "Seventh Veil, The", "Hereafter", "Mélo", "Life of Crime", "File on Thelma Jordan, The", "Sweetie", "Devil's Playground", "The Last Gladiators", "Soul Food", "Goebbels Experiment, The", "Amazing Grace", "Full Speed", "Undertaker and His Pals, The", "Christmas Carol, A", "Outbreak", "All's Well", "Chennai Express", "Kites", "Boondock Saints II: All Saints Day, The", "Secret of Santa Vittoria, The", "Death by China ", "Long Dark Hall, The", "Secrets & Lies", "Lone Ranger, The", "Alien", "Rembrandt", "Bolero (Uns et les autres, Les)", "Devil Hunter", "PCU", "White Banners", "My Favorite Wife", "Auntie Mame", "Go for It", "Nenette and Boni", "Juan of the Dead", "Ocean's Eleven", "I Have Found It", "First Shot", "Dr. Otto and the Riddle of the Gloom Beam", "Our Family Wedding", "Shaolin Wooden Men", "Bury My Heart at Wounded Knee", "Purgatory", "Transformers", "Sergeant Körmy and the South Pacific", "Walk in the Sun, A", "Hipsters (Stilyagi) ", "Let's Not Keep in Touch!                                   ", "Wer", "Forger, The", "Starving Games, The", "Liberty", "Place Beyond the Pines, The", "Man of Steel", "Who Are you Polly Maggoo (Qui êtes-vous, Polly Maggoo?)", "Feast II: Sloppy Seconds", "Post Tenebras Lux", "Boy Meets Girl", "Saludos Amigos", "Yu-Gi-Oh! ", "Private School", "Multiplicity", "Wagon Master", "Visitors, The", "Idiot Returns, The (Návrat idiota)", "Kiss of the Damned", "Evidence", "Locked Out (Enfermés dehors) ", "Narrow Margin"
 		      };
 		      String artist[] = {"Berge-Halvorson", "Wunsch, Bailey and Harris", "Kris-Crooks", "Mante, Mayer and Reinger", "Huel, Bednar and White", "Welch-Carroll", "Hintz Group", "Kunde-Torp", "Bode, Ernser and Sawayn", "Watsica-Cummerata", "Bode-Beatty", "Reichel, Nader and Barton", "Schmeler, McClure and Rohan", "Turcotte, Aufderhar and Collins", "Breitenberg-Sanford",
 		    		  "Smitham Inc", "Gerhold Inc", "O'Hara, Ward and Hackett", "Hand and Sons", "King, McCullough and Schumm", "Kassulke and Sons", "Strosin-Bauch", "Bahringer, Jakubowski and Hoppe", "Haag-Lind", "Runolfsdottir, Wyman and Hermiston", "Sporer, Ortiz and Halvorson", "Johns-Bruen", "Luettgen, Douglas and Terry", "Bernier, Toy and Nikolaus", "Jacobs LLC"
 		      };
-		      String album[] = {"incremental", "Virtual", "Balanced", "Operative", "Re-contextualized", "Centralized", "data-warehouse", "application", "throughput", "human-resource", "utilisation", "firmware", "5th generation", "interactive", "synergy", "user-facing", "interface", "attitude", "Switchable", "architecture", "foreground", "Cross-group", "Public-key", "intangible",
+		      
+		      String joinYear[] = {"1989", "2001", "2008", "2000", "1993", "2008", "1990", "2011", "1997", "1990", "2003", "1982", "2002", "1989", "2012", "2001", "1992", "1991", "1994", "2013", "1996", "2010", "1990", "2016", "2003", "1990",
+		    		  "1986", "1998", "2002", "1997", "2008", "2017", "1983", "1995", "2005", "1987", "2002", "2006", "1990", "2001", "2013", "1984", "2017", "2007", "2011", "2014", "2001", "2005", "1988", "2002",
+		    		  "2010", "1990", "1992", "2017", "2004", "2000", "1982", "1986", "1994", "1990", "1996", "2002", "2009", "1982", "1988"
+};
+		      
+		      
+                      String album[] = {"incremental", "Virtual", "Balanced", "Operative", "Re-contextualized", "Centralized", "data-warehouse", "application", "throughput", "human-resource", "utilisation", "firmware", "5th generation", "interactive", "synergy", "user-facing", "interface", "attitude", "Switchable", "architecture", "foreground", "Cross-group", "Public-key", "intangible",
 		    		  "project", "heuristic", "architecture", "Organized", "hardware", "complexity", "Fully-configurable", "system engine", "demand-driven", "approach", "motivating", "didactic", "attitude", "grid-enabled", "Robust", "conglomeration", "migration", "time-frame", "Synergistic", "upward-trending", "algorithm", "bottom-line", "Cloned", "knowledge user", "Business-focused",
 		    		  "well-modulated", "Synergistic", "high-level", "circuit", "system engine", "Persevering", "Realigned", "asymmetric", "radical", "optimizing", "Re-engineered","national"
 		      };
-		      
-		      String InsertTabelSQL4 = "INSERT INTO playlist (ID, TITLE, DESCRIPTION, COVERPICTURE, HASHTAG, VIEWS, USERID) VALUES (?,?,?,?,?,?,?)";
-		      PreparedStatement prpSt4 = con.prepareStatement(InsertTabelSQL4);
-		      
-		      String title[] = {"Phantasm III: Lord of the Dead", "Igor", "Macbeth", "Russia House, The", "How Do You Know", "Dans la peau d'une grande", "Necessary Death, A", "Under Capricorn", "Terkel in Trouble", "God Save the King", "Dolly and Her Lover", "Come and Get It", "The Forgotten Space", "Road Warrior, The (Mad Max 2)", "Antibodies", "(A)sexual", "Sky West and Crooked (Gypsy Girl) ",
-		    		  "Tu£sday", "David and Bathsheba", "Seventh Veil, The", "Hereafter", "Mélo", "Life of Crime", "File on Thelma Jordan, The", "Sweetie", "Devil's Playground", "The Last Gladiators", "Soul Food", "Goebbels Experiment, The", "Amazing Grace", "Full Speed", "Undertaker and His Pals, The", "Christmas Carol, A", "Outbreak", "All's Well", "Chennai Express", "Kites", "Boondock Saints II: All Saints Day, The", "Secret of Santa Vittoria, The", "Death by China ", "Long Dark Hall, The", "Secrets & Lies", "Lone Ranger, The", "Alien", "Rembrandt", "Bolero (Uns et les autres, Les)", "Devil Hunter", "PCU", "White Banners", "My Favorite Wife", "Auntie Mame", "Go for It", "Nenette and Boni", "Juan of the Dead", "Ocean's Eleven", "I Have Found It", "First Shot", "Dr. Otto and the Riddle of the Gloom Beam", "Our Family Wedding", "Shaolin Wooden Men", "Bury My Heart at Wounded Knee", "Purgatory", "Transformers", "Sergeant Körmy and the South Pacific", "Walk in the Sun, A", "Hipsters (Stilyagi) ", "Let's Not Keep in Touch! ", "Wer", "Forger, The", "Starving Games, The", "Liberty", "Place Beyond the Pines, The", "Man of Steel", "Who Are you Polly Maggoo (Qui êtes-vous, Polly Maggoo?)", "Feast II: Sloppy Seconds", "Post Tenebras Lux", "Boy Meets Girl", "Saludos Amigos", "Yu-Gi-Oh! ", "Private School", "Multiplicity", "Wagon Master", "Visitors, The", "Idiot Returns, The (Návrat idiota)", "Kiss of the Damned", "Evidence", "Locked Out (Enfermés dehors) ", "Narrow Margin"
+                      String duration[] = {"04:32", "03:00", "02:56", "07:00", "03:33", "04:32", "02:34", "06:21", "05:33", "05:06", "07:00", "04:00", "04:44", "03:44", "03:55", "03:09", "06:01", "03:22", "03:11", "02:59", "02:57", "06:07", "04:04", "02:02",
+		    		  "04:04", "04:56", "05:05", "05:44", "05:55", "02:22", "06:09", "02:47", "02:49", "03:55", "03:48", "03:45", "03:40", "03:41", "04:23", "05:12", "05:11", "04:11", "04:14", "04:15", "04:16", "04:17", "04:19", "05:01", "08:08",
+		    		  "04:34", "07:07", "04:39", "02:46", "02:49", "02:47", "02:28", "03:28", "03:13", "03:26", "02:41","05:08"
 		      };
+
 		      String description[] = {"Profound composite protocol", "Enhanced attitude-oriented methodology", "Stand-alone exuding task-force", "Adaptive heuristic policy", "Mandatory full-range success", "Horizontal object-oriented standardization", "Ergonomic needs-based productivity", "Re-contextualized maximized success",
 		    		  "Triple-buffered tangible time-frame", "Face to face object-oriented frame", "Proactive well-modulated task-force", "Reactive full-range internet solution","Balanced multi-tasking Graphical User Interface",
 		    		  "Cross-group upward-trending matrices", "Sharable global support", "Multi-tiered zero tolerance system engine", "Intuitive attitude-oriented firmware", "Synergistic explicit matrices", "Re-engineered real-time paradigm", "Fundamental national portal", "Switchable systemic groupware", 
@@ -165,9 +161,6 @@ public class TestDataGenerator {
 		    		  "well-modulated", "Synergistic", "high-level", "circuit", "system engine", "Persevering", "Realigned", "asymmetric", "radical", "optimizing", "Re-engineered","national"
 		      };
 		    
-		      String InsertTabelSQL5 = "INSERT INTO collection (ID, DESCRIPTION, TITLE, USERID, PLAYLISTID) VALUES (?,?,?,?,?)";
-		      PreparedStatement prpSt5 = con.prepareStatement(InsertTabelSQL5);
-		      
 		      String CollectionDescription[] = {"Profound composite protocol", "Enhanced attitude-oriented methodology", "Stand-alone exuding task-force", "Adaptive heuristic policy", "Mandatory full-range success", "Horizontal object-oriented standardization", "Ergonomic needs-based productivity", "Re-contextualized maximized success",
 		    		  "Triple-buffered tangible time-frame", "Face to face object-oriented frame", "Proactive well-modulated task-force", "Reactive full-range internet solution","Balanced multi-tasking Graphical User Interface",
 		    		  "Cross-group upward-trending matrices", "Sharable global support", "Multi-tiered zero tolerance system engine", "Intuitive attitude-oriented firmware", "Synergistic explicit matrices", "Re-engineered real-time paradigm", "Fundamental national portal", "Switchable systemic groupware", 
@@ -185,175 +178,11 @@ public class TestDataGenerator {
 		    		  "well-modulated", "Synergistic", "high-level", "circuit", "system engine", "Persevering", "Realigned", "asymmetric", "radical", "optimizing", "Re-engineered","national"
 		     };
 		      
-		      try {
-		    	  Random rand =new Random();
-		    	  //person
-		    	  int personId= 0;
-		    	  for(int i= 0; i< 1000; i++) {
-		    		  personId ++;
-		    		  String saveEmail = email[new Random().nextInt(email.length)];
-		    		  String saveLocation = location[new Random().nextInt(location.length)];
-		    		  String saveCity = city[new Random().nextInt(city.length)];
-		    		  String saveCountry = country[new Random().nextInt(country.length)];
-		    		  String saveCollege = college[new Random().nextInt(college.length)];
-		    		  String saveWebsite = website[new Random().nextInt(website.length)];
-		    		  String saveBio = bio[new Random().nextInt(bio.length)];
-		    		  String saveLastname = lastname[new Random().nextInt(lastname.length)];
-		    		  String saveFirstname = firstname[new Random().nextInt(firstname.length)];
-		    		  
-		    		  prpSt.setInt(1,personId);
-		        	  prpSt.setString(2,saveEmail);
-		        	  prpSt.setString(3,saveLocation);
-		        	  prpSt.setString(4,saveCity);
-		        	  prpSt.setString(5,saveCountry);
-		        	  prpSt.setString(6,saveCollege);
-		        	  prpSt.setString(7,saveWebsite);
-		        	  prpSt.setString(8,saveBio);
-		        	  prpSt.setString(9,saveLastname);
-		        	  prpSt.setString(10, saveFirstname);
-
-		        	  prpSt.executeUpdate();
-		    	  }
-		    	  
-		    	  //user
-		    	  int userId = 0 ;
-		    	  for(int i =0; i< 1000; i++) {
-		    		  userId ++;
-		    		  String saveJoinDate = joinDate[new Random().nextInt(joinDate.length)];
-		    		  String saveUsername = username[new Random().nextInt(username.length)];
-		    		  String savePassword = password[new Random().nextInt(password.length)];
-		    		  String saveProfilePic = profilePicture[new Random().nextInt(profilePicture.length)];
-		    		  int personId1 = rand.nextInt((999-2)+1)+1; //max-min ) + 1 )+ min
-		    		  
-		    		  prpSt2.setInt(1, userId);
-		    		  prpSt2.setString(2, saveJoinDate);
-		    		  prpSt2.setString(3, saveUsername);
-		    		  prpSt2.setString(4, savePassword);
-		    		  prpSt2.setString(5, saveProfilePic);
-		    		  prpSt2.setInt(6, personId1);
-		    		  
-		    		  prpSt2.executeUpdate();
-		    	  }
-		    	  
-		    	  //track
-		    	  int trackId = 0;
-		    	  for(int i=0; i<2000; i++) {
-		    		  trackId ++;
-		    		  String saveName = name[new Random().nextInt(name.length)];
-		    		  String saveArtist = artist[new Random().nextInt(artist.length)];
-		    		  int year = randBetween(1980,2017);
-		    		  String saveAlbum = album[new Random().nextInt(artist.length)];
-		    		  
-		    		  prpSt3.setInt(1, trackId);
-		    		  prpSt3.setString(2, saveName);
-		    		  prpSt3.setString(3, saveArtist);
-		    		  prpSt3.setInt(4, year);
-		    		  prpSt3.setString(5, saveAlbum);
-		    		  
-		    		  prpSt3.executeUpdate();
-		    	  }
-		    	  
-		    	  //play list
-		    	  int playListID = 0;
-		    	  for(int i = 0; i<500; i++) {
-		    		  playListID++;
-		    		  String saveTitle = title[new Random().nextInt(title.length)];
-		    		  String saveDescription = description[new Random().nextInt(description.length)];
-		    		  String saveCoverPicture = coverpicture[new Random().nextInt(coverpicture.length)];
-		    		  String saveHashtag = hashtag[new Random().nextInt(hashtag.length)];
-		    		  int views = randBetween(0,1000);
-		    		  int userId2 = rand.nextInt((999-2)+1)+1;
-		    		  
-		    		  prpSt4.setInt(1, playListID);
-		    		  prpSt4.setString(2, saveTitle);
-		    		  prpSt4.setString(3, saveDescription);
-		    		  prpSt4.setString(4, saveCoverPicture);
-		    		  prpSt4.setString(5, saveHashtag);
-		    		  prpSt4.setInt(6,views);
-		    		  prpSt4.setInt(7, userId2);
-		    		  
-		    		  prpSt4.executeUpdate();
-		    	  }
-		    	  
-		    	  //collection
-		    	  int collectionID = 0;
-		    	  for(int i =0; i< 200; i++) {
-		    		  collectionID++;
-		    		  String saveDescriptionC = CollectionDescription[new Random().nextInt(CollectionDescription.length)];
-		    		  String saveTitleC = CollectionTitle[new Random().nextInt(CollectionTitle.length)];
-		    		  int userId3 = rand.nextInt((999-2)+1)+1;
-		    		  int playlistID1 = rand.nextInt((499-2)+1)+1;
-		    		  
-		    		  prpSt5.setInt(1, collectionID);
-		    		  prpSt5.setString(2, saveDescriptionC);
-		    		  prpSt5.setString(3, saveTitleC);
-		    		  prpSt5.setInt(4, userId3);
-		    		  prpSt5.setInt(5, playlistID1);
-		    		  
-		    		  prpSt5.executeUpdate();
-		    	  }
-		    	  
-		      }catch (Exception e) {
-		          System.err.println("Fehler beim Einfuegen des Datensatzes: " + e.getMessage());
-		      }finally{
-		    	  if(prpSt !=null){
-		    		  prpSt.close();
-		    	  }
-		    	  if(prpSt2 !=null){
-		    		  prpSt2.close();
-		    	  }
-		    	  if(prpSt3 !=null){
-		    		  prpSt3.close();
-		    	  }
-		    	  if(prpSt4 !=null){
-		    		  prpSt4.close();
-		    	  }
-		    	  if(prpSt5 !=null){
-		    		  prpSt5.close();
-		    	  }
-		      }
-		      //checking the number of inserts for the tables
-		      ResultSet rs = stmt.executeQuery("SELECT COUNT (*) FROM person");
-		      if(rs.next()) {
-		    	  int count  = rs.getInt(1);
-		    	  System.out.println("1000 persons: "+ count);
-		      }
-		      ResultSet rs1 = stmt.executeQuery("SELECT COUNT (*) FROM user");
-		      if(rs1.next()) {
-		    	  int count  = rs1.getInt(1);
-		    	  System.out.println("1000 users: "+ count);
-		      }
-		      ResultSet rs2 = stmt.executeQuery("SELECT COUNT (*) FROM track");
-		      if(rs2.next()) {
-		    	  int count  = rs2.getInt(1);
-		    	  System.out.println("2000 tracks: "+ count);
-		      }
-		      ResultSet rs3 = stmt.executeQuery("SELECT COUNT (*) FROM playlist");
-		      if(rs3.next()) {
-		    	  int count  = rs3.getInt(1);
-		    	  System.out.println("500 playlists: "+ count);
-		      }
-		      ResultSet rs4 = stmt.executeQuery("SELECT COUNT (*) FROM collection");
-		      if(rs4.next()) {
-		    	  int count  = rs4.getInt(1);
-		    	  System.out.println("200 collections: "+ count);
-		      }
-		      
-		      //clean up connections
-		      rs.close();
-		      rs1.close();
-		      rs2.close();
-		      rs3.close();
-		      rs4.close();
-		      stmt.close();
-		      con.close();
-		      
+	
 		}catch (Exception e) {
 		      System.err.println(e.getMessage());
 		}
 	
 	  }
-	public static int randBetween(int start, int end) {
-	      return start + (int)Math.round(Math.random() * (end - start));
-	}
+
 }
