@@ -46,22 +46,20 @@ $conn = connect();
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
  <!--- left column --->
  <div class = "container">
- <div style="background-color:#00CCCC opacity:0.5 !important" class="jumbotron">
-
-    <h1 style="text-align: center">Database of Music Platform</h1>
-     <img src="https://8tracks.com/assets/brand/8tracks_logo_blue-1e3b05eb940438026eff53085e3d7b9a7ce8a80c5823ac20695bcf31e0c2ea86.svg" align="middle"  alt="8tracks" width="600" height="150">
+<div style="text-align: center; font-size:55px;">Welcome to   <img src="https://8tracks.com/assets/brand/8tracks_logo_blue-1e3b05eb940438026eff53085e3d7b9a7ce8a80c5823ac20695bcf31e0c2ea86.svg" alt="8tracks" width="200" height="100">
 	 </div>
- <ul>
-  <li>  <a href="http://localhost/imse/readUsers.php">Read users</a></li>
-  <li>  <a href="http://localhost/imse/importUsers.php">Import</a></li>
+ <ul>    <li> 
+      <a href='index.php'>Home</a>
+    </li>
+  <li>  <a href="http://localhost/imse/readUsers.php">All users</a></li>
   <li>  <a href="http://localhost/imse/deleteUser.php">Delete All</a></li>
 </ul>
 <br>
 <?php
   if (isset($_GET['id'])) {
-    $sql = "SELECT * FROM Users WHERE Id = " . $_GET['id'] . " ";
+    $sql = "SELECT * FROM Users WHERE Id = " . $_GET['id'] . " ORDER BY JoinDate DESC";
   } else if(!isset($_GET['id'])){
-    $sql = "SELECT * FROM Users";
+    $sql = "SELECT * FROM Users ORDER BY JoinDate DESC";
   }
   $result = $conn->query($sql);
 ?>
@@ -69,6 +67,7 @@ $conn = connect();
     <thead>
       <tr>		
 		<th> <a href="http://localhost/imse/createUser.php">Create</a></li></th>
+		<th> </th>
 		<th> </th>
 		<th>Username</th>
 		<th>Password</th>
@@ -81,10 +80,11 @@ $conn = connect();
   // fetch rows of the executed sql query
   while ($row = $result->fetch_assoc()) {
 	echo "<tr>";
+	echo "<td> <a href=\"detailsUser.php?id=" . $row['Id'] . "\">Show Details</a> </td>";
 	echo "<td> <a href=\"updateUser.php?id=" . $row['Id'] . "\">Update</a> </td>";
 	echo "<td> <a href=\"deleteUser.php?id=" . $row['Id'] . "\">Delete</a> </td>";
 	echo "<td>" . $row['Username'] . "</td>";
-	echo "<td>" . $row['Password'] . "</td>";
+	echo "<td> ***** </td>";
     echo "<td>" . $row['JoinDate'] . "</td>";
 	echo "<td>" . $row['ProfilePicture'] . "</td>";
     echo "</tr>";
