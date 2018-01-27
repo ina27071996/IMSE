@@ -45,7 +45,24 @@ public final class MysqlDbManager {
 	public static List<Collection> GetCollection()
 	{
 	    String query = "SELECT * FROM Collection";
-		return null;
+		try {
+	    	Connection conn = DatabaseHandler.getConnection(user, pass);
+	        Statement st = conn.createStatement();
+	        ResultSet rs = st.executeQuery(query);
+	        while (rs.next())
+	        {
+	        	Collection item = new Collection();
+	        	item.setId(rs.getInt("id"));
+	        	item.setTitle(rs.getString("title"));
+	        	item.setDescription(rs.getString("description"));
+	        	item.setUserId(rs.getInt("userId"));
+			item.setPlaylistId(rs.getInt("playlistId"));
+	        	result.add(item);
+	        }
+	        st.close();
+		} catch (SQLException e) {
+		}
+		return result;
 	}
 	
 	public static List<Track> GetTrack()
