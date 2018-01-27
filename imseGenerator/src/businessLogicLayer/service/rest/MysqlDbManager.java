@@ -44,7 +44,8 @@ public final class MysqlDbManager {
 	
 	public static List<Collection> GetCollection()
 	{
-	    String query = "SELECT * FROM Collection";
+		List<Collection> result = new ArrayList<Collection>();
+	    	String query = "SELECT * FROM Collection";
 		try {
 	    	Connection conn = DatabaseHandler.getConnection(user, pass);
 	        Statement st = conn.createStatement();
